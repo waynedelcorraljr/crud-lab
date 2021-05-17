@@ -6,7 +6,8 @@ import manageRestaurant from './reducers/manageRestaurant';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
-const store = createStore(manageRestaurant);
+const initState = {restaurants: [], reviews: []}
+const store = createStore(manageRestaurant, initState);
 
 
 ReactDOM.render(
