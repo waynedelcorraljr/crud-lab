@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Reviews from './Reviews';
+
 
 class ReviewInput extends Component {
 
@@ -26,7 +26,7 @@ class ReviewInput extends Component {
 
   handleOnSubmit = event => {
     event.preventDefault()
-    this.props.addReview(this.state.text, this.props.restId)
+    this.props.addReview(this.state.text, this.props.restaurantId)
     this.setState({
       text: ''
     })

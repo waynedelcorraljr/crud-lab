@@ -13,24 +13,28 @@ export default function manageRestaurants(state = {
                 text: action.text
             }   
             console.log(state)     
-            return { restaurants: state.restaurants.concat(restaurant) }
+            return { restaurants: state.restaurants.concat(restaurant), reviews: state.reviews }
 
         case 'DELETE_RESTAURANT':
 
-            return { restaurants: state.restaurants.filter(restaurant => restaurant.id !== action.restId) }
+            return { restaurants: state.restaurants.filter(restaurant => restaurant.id !== action.restId), reviews: state.reviews }
 
         case 'ADD_REVIEW': 
 
             const review = {
                 id: cuid(),
-                restId: action.restId,
+                restaurantId: action.restaurantId,
                 text: action.text
             }
 
             console.log(state)
 
-            return { reviews: state.reviews.concat(review) }
-        
+            return { restaurants: state.restaurants, reviews: state.reviews.concat(review) }
+
+        case 'DELETE_REVIEW':
+
+            return { restaurants: state.restaurants, reviews: state.reviews.filter(review => review.id !== action.revId) }
+
         default:
 
             return state;
